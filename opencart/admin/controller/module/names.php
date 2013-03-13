@@ -20,13 +20,13 @@ class ControllerModuleNames extends Controller {
 			$this->data['error_warning'] = '';
 		}
 
-		$this->data['breadcrumbs'] = $this->get_bread_crumbs('Names', 'name', $this->session->data['token']);
+		$this->data['breadcrumbs'] = $this->get_bread_crumbs('Names', 'names', $this->session->data['token']);
 
 		$this->load->model('design/layout');
 
 		$this->data['layouts'] = $this->model_design_layout->getLayouts();
 
-		$this->template = 'module/name.tpl';
+		$this->template = 'module/names.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -36,7 +36,7 @@ class ControllerModuleNames extends Controller {
 	}
 
 	private function validate() {
-		if (!$this->user->hasPermission('modify', 'module/name')) {
+		if (!$this->user->hasPermission('modify', 'module/names')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
