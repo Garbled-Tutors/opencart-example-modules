@@ -4,3 +4,5 @@ opencart/admin/config.php
 */logs/*
 *~
 *.swp
+*/*/cache/*
+*/*/logs/*
