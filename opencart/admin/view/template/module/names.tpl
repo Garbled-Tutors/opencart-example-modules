@@ -22,6 +22,13 @@
 							<td class="left"></td>
             </tr>
           </thead>
+					<?php foreach ($names->rows as $name) { ?>
+					<tr>
+						<td><?php echo $name['name'] ?> </td>
+						<td><?php echo $name['email'] ?></td>
+						<td></td>
+					</tr>
+					<?php } ?>
 					<tfoot>
 						<td>
 							<input type="hidden" name="action" value="" />

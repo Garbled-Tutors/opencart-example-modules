@@ -38,13 +38,14 @@ class ControllerModuleNames extends Controller {
 
 		$this->data['modules'] = array();
 
+		$this->data['modules'] = $this->request->post['names_module'];
+		$this->load->model('module/names');
 		if (isset($this->request->post['names_module'])) {
-			$this->data['modules'] = $this->request->post['names_module'];
-			$this->load->model('module/names');
 			$this->model_module_names->addName($this->data['modules']['Name'],$this->data['modules']['Email']);
 		} elseif ($this->config->get('names_module')) { 
 			$this->data['modules'] = $this->config->get('names_module');
 		}
+		$this->data['names'] = $this->model_module_names->getNames();
 
 		$this->load->model('design/layout');
 

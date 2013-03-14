@@ -16,5 +16,10 @@ class ModelModuleNames extends Model
 	{
 		$this->db->query("INSERT INTO ".DB_PREFIX."names (name, email) VALUES ('$name', '$email')");
 	}
+
+	public function getNames()
+	{
+		return $this->db->query("SELECT * FROM ".DB_PREFIX."names");
+	}
 }
 ?>
