@@ -49,6 +49,10 @@ class ControllerModuleNames extends Controller {
 			{
 				$this->model_module_names->removeName($this->data['modules']['var']);
 			}
+			elseif ($this->data['modules']['action'] == 'update')
+			{
+				$this->model_module_names->updateName($this->data['modules']['Name'],$this->data['modules']['Email'],$this->data['modules']['var']);
+			}
 		}
 		$this->data['names'] = $this->model_module_names->getNames();
 
