@@ -24,15 +24,15 @@
           </thead>
 					<?php foreach ($names->rows as $name) { ?>
 					<tr>
-						<td><?php echo $name['name'] ?> </td>
+						<td><?php echo $name['name'] ?></td>
 						<td><?php echo $name['email'] ?></td>
-						<td></td>
+						<td><a onclick="document.getElementById('action_var').value=<?php echo $name['id']; ?>;document.getElementById('action_field').value='delete';$('#form').submit();" class="button">Delete</a></td>
 					</tr>
 					<?php } ?>
 					<tfoot>
 						<td>
-							<input type="hidden" name="action" value="" />
-							<input type="hidden" name="var" value="" />
+							<input type="hidden" name="names_module[action]" id='action_field' value="add" />
+							<input type="hidden" name="names_module[var]" id='action_var' value="" />
 							<input type="text" name="names_module[Name]" />
 						</td>
 						<td>

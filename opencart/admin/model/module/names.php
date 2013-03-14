@@ -21,5 +21,9 @@ class ModelModuleNames extends Model
 	{
 		return $this->db->query("SELECT * FROM ".DB_PREFIX."names");
 	}
+	public function removeName($id)
+	{
+		$this->db->query("DELETE FROM ".DB_PREFIX."names WHERE id = ".$id);
+	}
 }
 ?>
