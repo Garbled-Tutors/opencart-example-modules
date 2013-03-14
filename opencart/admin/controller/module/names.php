@@ -11,7 +11,20 @@ class ControllerModuleNames extends Controller {
 		return $breadcrumbs;
 	}
 
-	public function index() {
+	public function install()
+	{
+		$this->load->model('module/names');
+		$this->model_module_names->createTables();
+	}
+
+	public function uninstall()
+	{
+		$this->load->model('module/names');
+		$this->model_module_names->clearTables();
+	}
+
+	public function index()
+	{
 		$this->document->setTitle('Names');
 
 		if (isset($this->error['warning'])) {
@@ -21,6 +34,17 @@ class ControllerModuleNames extends Controller {
 		}
 
 		$this->data['breadcrumbs'] = $this->get_bread_crumbs('Names', 'names', $this->session->data['token']);
+		$this->data['action'] = $this->url->link('module/names', 'token=' . $this->session->data['token'], 'SSL');
+
+		$this->data['modules'] = array();
+
+		if (isset($this->request->post['names_module'])) {
+			$this->data['modules'] = $this->request->post['names_module'];
+			$this->load->model('module/names');
+			$this->model_module_names->addName($this->data['modules']['Name'],$this->data['modules']['Email']);
+		} elseif ($this->config->get('names_module')) { 
+			$this->data['modules'] = $this->config->get('names_module');
+		}
 
 		$this->load->model('design/layout');
 
@@ -33,18 +57,6 @@ class ControllerModuleNames extends Controller {
 		);
 
 		$this->response->setOutput($this->render());
-	}
-
-	private function validate() {
-		if (!$this->user->hasPermission('modify', 'module/names')) {
-			$this->error['warning'] = $this->language->get('error_permission');
-		}
-
-		if (!$this->error) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 }
 ?>
