@@ -19,11 +19,9 @@ class ModelModuleNames extends Model
 
 	public function updateName($name, $email, $id)
 	{
-		//$this->db->query("UPDATE ".DB_PREFIX."names SET (name = '$name', email = '$email') WHERE id = '".$id ."'");
 		$this->db->query("UPDATE `".DB_PREFIX."names` SET `name`='$name', `email`='$email' WHERE `id`='$id'");
 
 	}
-
 	public function getNames()
 	{
 		return $this->db->query("SELECT * FROM ".DB_PREFIX."names");
