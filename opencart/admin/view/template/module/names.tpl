@@ -35,7 +35,7 @@
 					<?php } } ?>
 					<tfoot>
 						<td>
-						<?php if ($modules['action'] != 'edit') { ?>
+						<?php if ( (!isset($modules['action'])) or ($modules['action'] != 'edit') ) { ?>
 							<input type="hidden" name="names_module[action]" id='action_field' value="add" />
 							<input type="hidden" name="names_module[var]" id='action_var' value="" />
 							<input type="text" name="names_module[Name]" />
