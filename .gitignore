@@ -1,5 +1,5 @@
-opencart/config.php
-opencart/admin/config.php
+public_html/config.php
+public_html/admin/config.php
 */cache/*
 */logs/*
 *~

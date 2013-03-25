@@ -14,6 +14,7 @@ class ModelModuleNames extends Model
 
 	public function addName($name, $email)
 	{
+		//$safe_name = mysql_real_escape_string($name);
 		$this->db->query("INSERT INTO ".DB_PREFIX."names (name, email) VALUES ('$name', '$email')");
 	}
 
